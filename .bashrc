@@ -41,8 +41,8 @@ xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 screen)
-        GIT_PS1_SHOWDIRTYSTATE=true
-        PROMPT_COMMAND='echo -ne "\033k$(__git_ps1)\033"'
+    GIT_PS1_SHOWDIRTYSTATE=true
+    PROMPT_COMMAND='echo -ne "\033k$(__git_ps1)\033"'
     ;;
 *)
     ;;
@@ -76,3 +76,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# source nvm if it exists
+if [ -f ~/.nvm/nvm.sh ]; then
+    . ~/.nvm/nvm.sh
+    nvm use default
+fi

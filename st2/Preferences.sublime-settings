@@ -1,0 +1,13 @@
+{
+    "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"default_encoding": "utf-8",
+	"default_line_ending": "unix",
+	"font_face": "Ubuntu Mono",
+	"font_size": 11,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"word_wrap": false
+}

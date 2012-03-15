@@ -42,7 +42,7 @@ xterm*|rxvt*)
     ;;
 screen)
     GIT_PS1_SHOWDIRTYSTATE=true
-    PROMPT_COMMAND='echo -ne "\033k$(__git_ps1)\033"'
+    PROMPT_COMMAND='[ $(__git_ps1) ] && echo -ne "\033k$(__git_ps1)\033"'
     ;;
 *)
     ;;

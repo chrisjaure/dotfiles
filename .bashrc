@@ -41,6 +41,7 @@ xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 screen)
+    # the following flag may cause the prompt to be slower
     GIT_PS1_SHOWDIRTYSTATE=true
     PROMPT_COMMAND='[ "$(__git_ps1)" ] && echo -ne "\033k$(readlink -m $(__gitdir)/../ | xargs basename)$(__git_ps1)\033"'
     ;;

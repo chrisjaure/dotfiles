@@ -80,5 +80,4 @@ fi
 # source nvm if it exists
 if [ -f ~/.nvm/nvm.sh ]; then
     . ~/.nvm/nvm.sh
-    nvm use default
 fi

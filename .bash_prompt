@@ -1,0 +1,35 @@
+# Set the prompt
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+	debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# This will show something like:
+#
+# chris@chris-ubuntu in ~
+# ›
+PS1='\n${debian_chroot:+($debian_chroot)}\[\033[01;35m\]\u@\h\[\033[00m\] in \[\033[01;34m\]\w\[\033[00m\]\n› '
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+	;;
+screen)
+	# the following flag may cause the prompt to be slower
+	GIT_PS1_SHOWDIRTYSTATE=true
+	PROMPT_COMMAND='[ "$(__git_ps1)" ] && echo -ne "\033k$(readlink -m $(__gitdir)/../ | xargs basename)$(__git_ps1)\033"'
+	;;
+*)
+	;;
+esac
+
+# for tmux: sets window name to basename or git repo and branch if in git dir
+function set_window_title() {
+	if [ "$(__git_ps1)" ]; then
+		echo -ne "\033k$(readlink -m $(__gitdir)/../ | xargs basename)$(__git_ps1)\033"
+	else
+		echo -ne "\033k$(basename `pwd`)\033"
+	fi
+}

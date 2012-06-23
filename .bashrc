@@ -23,61 +23,21 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-# Set the prompt
-# This will show something like:
-#
-# chris@chris-ubuntu in ~
-# ›
-PS1='\n${debian_chroot:+($debian_chroot)}\[\033[01;35m\]\u@\h\[\033[00m\] in \[\033[01;34m\]\w\[\033[00m\]\n› '
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-screen)
-    # the following flag may cause the prompt to be slower
-    GIT_PS1_SHOWDIRTYSTATE=true
-    PROMPT_COMMAND='[ "$(__git_ps1)" ] && echo -ne "\033k$(readlink -m $(__gitdir)/../ | xargs basename)$(__git_ps1)\033"'
-    ;;
-*)
-    ;;
-esac
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+# Load ~/.bash_prompt, ~/.bash_exports, ~/.bash_aliases, ~/.bash_functions and
+# ~/.bash_source, the latter can be used for settings you don’t want to commit
+for file in ~/.bash_{prompt,exports,aliases,functions,source}; do
+	[ -r "$file" ] && . "$file"
+done
+unset file
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+	. /etc/bash_completion
 fi
 
 # source nvm if it exists
 if [ -f ~/.nvm/nvm.sh ]; then
-    . ~/.nvm/nvm.sh
+	. ~/.nvm/nvm.sh
 fi

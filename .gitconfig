@@ -1,0 +1,32 @@
+[user]
+	name = Chris Jaure
+	email = chrisjaure@gmail.com
+
+[core]
+	autocrlf = input
+	whitespace = space-before-tab,trailing-space
+
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
+
+[alias]
+	co = checkout
+	st = status
+	# Commit all changes
+	ca = !git add -A && git commit -av
+	# Switch to a branch, creating it if necessary
+	go = checkout -B
+
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+
+[color]
+	ui = auto
+
+[push]
+	default = upstream
+
+[rerere]
+	enabled = 1

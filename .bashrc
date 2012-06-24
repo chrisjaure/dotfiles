@@ -23,9 +23,6 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# PATH additions
-export PATH="~/bin:$PATH"
-
 # Load ~/.bash_prompt, ~/.bash_exports, ~/.bash_aliases, ~/.bash_functions and
 # ~/.bash_source, the latter can be used for settings you don’t want to commit
 for file in ~/.bash_{prompt,exports,aliases,functions,source}; do
@@ -38,9 +35,4 @@ unset file
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 	. /etc/bash_completion
-fi
-
-# source nvm if it exists
-if [ -f ~/.nvm/nvm.sh ]; then
-	. ~/.nvm/nvm.sh
 fi

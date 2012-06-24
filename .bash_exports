@@ -1,0 +1,13 @@
+# PATH additions
+export PATH="$HOME/bin/git-lava:$HOME/bin:$PATH"
+
+# git-lava autocomplete
+if [ -f ~/bin/git-lava/bash_completion/git-lava ]; then
+	. ~/bin/git-lava/bash_completion/git-lava;
+fi
+
+# source nvm if it exists
+if [ -f ~/.nvm/nvm.sh ]; then
+	. ~/.nvm/nvm.sh
+	. ~/.nvm/bash_completion
+fi

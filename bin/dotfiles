@@ -1,22 +1,30 @@
 #!/bin/bash
 function doIt() {
-	local install_path=~/dotfiles
-	local repo_path="git@github.com:chrisjaure/dotfiles.git"
+	local local_path=~/dotfiles
+	local remote_path="git@github.com:chrisjaure/dotfiles.git"
 
 	# Initialize.
-	if [[ ! -d $install_path ]]; then
+	if [[ ! -d $local_path ]]; then
 		# ~/dotfiles doesn't exist? Clone it!
-		echo "Cloning $repo_path into $install_path..."
-		git clone $repo_path $install_path
-		cd $install_path
+		echo "Cloning $remote_path into $local_path..."
+		git clone $remote_path $local_path
+		cd $local_path
 	else
 		# Make sure we have the latest files.
-		echo "Updating $install_path..."
-		cd $install_path
+		echo "Updating $local_path..."
+		cd $local_path
 		git pull
 	fi
-	rsync --exclude ".git/" --exclude "bootstrap.sh" --exclude "README.md" -av $install_path ~
+	rsync --exclude ".git/" --exclude "README.md" -arv . ~
 }
+
+# If Git is not installed...
+if [[ ! "$(type -P git)" ]]; then
+	if [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
+		echo "Installing Git..."
+		sudo apt-get -qq install git-core
+	fi
+fi
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
 	doIt

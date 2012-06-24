@@ -7,15 +7,16 @@ function doIt() {
 	if [[ ! -d $local_path ]]; then
 		# ~/dotfiles doesn't exist? Clone it!
 		echo "Cloning $remote_path into $local_path..."
-		git clone $remote_path $local_path
+		git clone --recursive $remote_path $local_path
 		cd $local_path
 	else
 		# Make sure we have the latest files.
 		echo "Updating $local_path..."
 		cd $local_path
 		git pull
+		git submodule update --init --recursive --quiet
 	fi
-	rsync --exclude ".git/" --exclude "README.md" -arv . ~
+	rsync --exclude "README.md" --exclude ".git*" --exclude ".npm*" -arv . ~
 }
 
 # If Git is not installed...

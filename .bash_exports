@@ -1,13 +1,10 @@
 # PATH additions
 export PATH="$HOME/bin/git-lava:$HOME/bin:$PATH"
 
-# git-lava autocomplete
-if [ -f ~/bin/git-lava/bash_completion/git-lava ]; then
-	. ~/bin/git-lava/bash_completion/git-lava;
-fi
+# don't put duplicate lines in the history. See bash(1) for more options
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoredups:ignorespace
 
-# source nvm if it exists
-if [ -f ~/.nvm/nvm.sh ]; then
-	. ~/.nvm/nvm.sh
-	. ~/.nvm/bash_completion
-fi
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000

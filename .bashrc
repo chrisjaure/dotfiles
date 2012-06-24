@@ -5,16 +5,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
-
 # append to the history file, don't overwrite it
 shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -35,4 +27,15 @@ unset file
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 	. /etc/bash_completion
+fi
+
+# git-lava autocomplete
+if [ -f ~/bin/git-lava/bash_completion/git-lava ]; then
+	. ~/bin/git-lava/bash_completion/git-lava;
+fi
+
+# source nvm if it exists
+if [ -f ~/.nvm/nvm.sh ]; then
+	. ~/.nvm/nvm.sh
+	. ~/.nvm/bash_completion
 fi

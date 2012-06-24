@@ -1,9 +1,23 @@
 #!/bin/bash
-cd "$(dirname "$0")/../"
-git pull
 function doIt() {
-	rsync --exclude ".git/" --exclude "bootstrap.sh" --exclude "README.md" -av . ~
+	local install_path=~/dotfiles
+	local repo_path="git@github.com:chrisjaure/dotfiles.git"
+
+	# Initialize.
+	if [[ ! -d $install_path ]]; then
+		# ~/dotfiles doesn't exist? Clone it!
+		echo "Cloning $repo_path into $install_path..."
+		git clone $repo_path $install_path
+		cd $install_path
+	else
+		# Make sure we have the latest files.
+		echo "Updating $install_path..."
+		cd $install_path
+		git pull
+	fi
+	rsync --exclude ".git/" --exclude "bootstrap.sh" --exclude "README.md" -av $install_path ~
 }
+
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
 	doIt
 else
@@ -13,5 +27,6 @@ else
 		doIt
 	fi
 fi
+
 unset doIt
 . ~/.bashrc

@@ -17,8 +17,6 @@ xterm*|rxvt*)
 	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
 	;;
 screen)
-	# the following flag may cause the prompt to be slower
-	GIT_PS1_SHOWDIRTYSTATE=true
 	PROMPT_COMMAND='set_window_title'
 	;;
 *)
@@ -27,8 +25,10 @@ esac
 
 # for tmux: sets window name to basename or git repo and branch if in git dir
 function set_window_title() {
-	if [ "$(__git_ps1)" ]; then
-		echo -ne "\033k$(readlink -m $(__gitdir)/../ | xargs basename)$(__git_ps1)\033"
+	GIT_PS1_SHOWDIRTYSTATE=true
+	local GIT_PS1=$(__git_ps1)
+	if [ "$GIT_PS1" ]; then
+		echo -ne "\033k$(readlink -m $(__gitdir)/../ | xargs basename)$GIT_PS1\033"
 	else
 		echo -ne "\033k$(basename `pwd`)\033"
 	fi

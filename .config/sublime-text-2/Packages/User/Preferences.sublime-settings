@@ -9,5 +9,6 @@
 	[
 		"Vintage"
 	],
-	"word_wrap": false
+	"word_wrap": false,
+    "bold_folder_labels": true
 }

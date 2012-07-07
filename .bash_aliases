@@ -1,5 +1,6 @@
 alias ..="cd .."
 alias open=xdg-open
+alias c=clear
 
 # Package management
 alias update="sudo apt-get -qq update && sudo apt-get upgrade"

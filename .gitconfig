@@ -16,6 +16,8 @@
 	st = status
 	# Commit all changes
 	ca = !git add -A && git commit -av
+    # Ammend all changes to previous commit
+    caa = !git ca --amend --reuse-message=HEAD
     # diff changes only committed in a branch compared to origin/master
     dm = !git diff origin/master...${1-HEAD}
     # list files modified by commits in branch compared to origin/master

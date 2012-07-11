@@ -1,7 +1,7 @@
 #!/bin/bash
 function doIt() {
 	local local_path=~/dotfiles
-	local remote_path="git@github.com:chrisjaure/dotfiles.git"
+	local remote_path="git://github.com/chrisjaure/dotfiles.git"
 
 	# Initialize.
 	if [[ ! -d $local_path ]]; then

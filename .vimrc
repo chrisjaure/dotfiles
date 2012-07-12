@@ -1,9 +1,10 @@
+" This must be first, because it changes other options as side effect
+set nocompatible
+
 call pathogen#infect()
 
-syntax on
-filetype plugin indent on
-set number
-
+" used solarized color scheme
+colorscheme solarized
 if has('gui_running')
 	set background=light
 else
@@ -12,41 +13,71 @@ endif
 set t_Co=16
 let g:solarized_termcolors=256
 
-set nocompatible
 
-set smartindent
+" enable syntax highlighting
+syntax on
+
+" use file type plugins and indentation
+filetype plugin indent on
+
+" Show line numbers
+set number
+
+" show matching parens
+set showmatch
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+" tab indenting
 set autoindent
+set smartindent
 set smarttab
 set tabstop=4
+set shiftwidth=4
+set copyindent
 
-"always show status bar
+" always show status bar
 set laststatus=2
 
-"hide gui elements
+" reset swap dir
+set directory=/tmp
+" disable backup
+set nobackup
+set nowb
+
+" toggle paste mode
+set pastetoggle=<F2>
+
+" short-cut
+nnoremap ; :
+
+" hide gui elements
 set guioptions-=r
 set guioptions-=l
 set guioptions-=T
 
-colorscheme solarized
+" move line down/up with ctrl+shift+up|down
+nnoremap <C-S-Down> :m+<CR>==
+nnoremap <C-S-Up> :m-2<CR>==
+inoremap <C-S-Down> <Esc>:m+<CR>==gi
+inoremap <C-S-Up> <Esc>:m-2<CR>==gi
+vnoremap <C-S-Down> :m'>+<CR>gv=gv
+vnoremap <C-S-Up> :m-2<CR>gv=gv
 
-"move line down/up
-nnoremap <A-Down> :m+<CR>==
-nnoremap <A-Up> :m-2<CR>==
-inoremap <A-Down> <Esc>:m+<CR>==gi
-inoremap <A-Up> <Esc>:m-2<CR>==gi
-vnoremap <A-Down> :m'>+<CR>gv=gv
-vnoremap <A-Up> :m-2<CR>gv=gv
+" mouse mode
+set mouse=a
 
-"reset swap dir
-set directory=/tmp
+" more familiar shortcuts
+" source $VIMRUNTIME/mswin.vim
+" behave mswin
 
-"more familiar shortcuts
-source $VIMRUNTIME/mswin.vim
-behave mswin
-
-"supertab settings
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+" supertab settings
 let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
-"window switching
+" window switching
 map <C-Tab> <C-W><C-W>

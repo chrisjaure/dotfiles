@@ -2,6 +2,9 @@ alias ..="cd .."
 alias open=xdg-open
 alias c=clear
 
+# gvim global menu fix in ubuntu unity
+alias gvim="vim -c :gui"
+
 # Package management
 alias update="sudo apt-get -qq update && sudo apt-get upgrade"
 alias install="sudo apt-get install"

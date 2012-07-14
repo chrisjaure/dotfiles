@@ -24,10 +24,6 @@
 	# list files modified by commits in branch compared to origin/master
 	dmf = !git diff origin/master...${1-HEAD} --name-only
 
-[branch "master"]
-	remote = origin
-	merge = refs/heads/master
-
 [color]
 	ui = auto
 

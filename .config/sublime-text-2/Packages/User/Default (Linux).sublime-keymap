@@ -8,5 +8,6 @@
 			{ "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true }
 		]
 	},
+    { "keys": ["alt+shift+s"], "command": "find_under_expand_skip" },
 	{ "keys": ["ctrl+w"], "command": "insert_snippet", "args": { "name": "Packages/XML/long-tag.sublime-snippet" } }
 ]

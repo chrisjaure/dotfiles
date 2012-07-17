@@ -1,1 +1,4 @@
-{    "sublimelinter_delay": 200,	"sublimelinter_gutter_marks": true}
+{
+	"sublimelinter_delay": 0.2,
+	"sublimelinter_gutter_marks": true
+}

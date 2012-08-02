@@ -13,7 +13,6 @@
 [alias]
 	co = checkout
 	d = diff
-	ps = push
 	st = status
 	# Commit all changes
 	ca = !git add -A && git commit -av
@@ -23,6 +22,8 @@
 	dm = !git diff origin/master...${1-HEAD}
 	# list files modified by commits in branch compared to origin/master
 	dmf = !git diff origin/master...${1-HEAD} --name-only
+    # a nice graph
+    graph = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
 
 [color]
 	ui = auto

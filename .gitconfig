@@ -5,6 +5,8 @@
 [core]
 	autocrlf = input
 	whitespace = space-before-tab,trailing-space
+    # set tab width to 4 for things like diffs
+    pager = 'less -x4'
 
 [apply]
 	# Detect whitespace errors when applying a patch
@@ -12,7 +14,7 @@
 
 [alias]
 	co = checkout
-	d = diff
+	d = !git diff | view - +'file diff'
 	st = status
 	# Commit all changes
 	ca = !git add -A && git commit -av

@@ -18,3 +18,4 @@ Inspiration
 -----------
 <https://github.com/cowboy/dotfiles>  
 <https://github.com/mathiasbynens/dotfiles>
+<http://www.vindictus.com>

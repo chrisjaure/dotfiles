@@ -1,15 +1,19 @@
 alias ..="cd .."
-alias open=xdg-open
 alias c=clear
 
-# gvim global menu fix in ubuntu unity
-alias gvim="vim -c :gui"
+# Ubuntu-only.
+if [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
+	alias open=xdg-open
+	
+	# gvim global menu fix in ubuntu unity
+	alias gvim="vim -c :gui"
 
-# Package management
-alias update="sudo apt-get -qq update && sudo apt-get upgrade"
-alias install="sudo apt-get install"
-alias remove="sudo apt-get remove"
-alias search="apt-cache search"
+	# Package management
+	alias update="sudo apt-get -qq update && sudo apt-get upgrade"
+	alias install="sudo apt-get install"
+	alias remove="sudo apt-get remove"
+	alias search="apt-cache search"
+fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

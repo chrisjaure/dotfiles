@@ -17,14 +17,26 @@ shopt -s checkwinsize
 
 # Load ~/.bash_prompt, ~/.bash_exports, ~/.bash_aliases, ~/.bash_functions and
 # ~/.bash_source, the latter can be used for settings you don’t want to commit
-for file in ~/.bash_{prompt,exports,aliases,functions,source}; do
+for file in ~/.bash_{exports,aliases,functions,source}; do
 	[ -r "$file" ] && . "$file"
 done
 unset file
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+	. ~/.bash_prompt_darwin
+else
+	. ~/.bash_prompt
+fi
+
+# bash completion
+## mac osx
+if [ -f /usr/local/etc/bash_completion ]; then
+	. /usr/local/etc/bash_completion
+fi
+if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
+	. /usr/local/etc/bash_completion.d/git-prompt.sh
+fi
+## ubuntu
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 	. /etc/bash_completion
 fi

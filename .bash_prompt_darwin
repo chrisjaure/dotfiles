@@ -1,0 +1,28 @@
+# Set the prompt
+
+
+# This will show something like:
+#
+# chris@chris-ubuntu in ~
+# ›
+PS1='\n\[\033[01;31m\]\u@\h\[\033[00m\] in \[\033[01;35m\]\w\[\033[00m\]\n› '
+
+# If this is an xterm set the title to dir or git repo (branch)
+case "$TERM" in
+xterm*|rxvt*)
+	PROMPT_COMMAND='set_tab_title'
+	;;
+*)
+	;;
+esac
+
+# set tab name to basename or git repo and branch if in git dir
+function set_tab_title() {
+	GIT_PS1_SHOWDIRTYSTATE=true
+	local GIT_PS1=$(__git_ps1)
+	if [ "$GIT_PS1" ]; then
+		printf "\e]1;$(greadlink -m $(__gitdir)/../ | xargs basename)$GIT_PS1\a"
+	#else
+		#printf "\e]1;$(basename $(pwd))\a"
+	fi
+}

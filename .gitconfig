@@ -11,19 +11,38 @@
 	whitespace = fix
 
 [alias]
-	co = checkout
-	d = !git diff | view - +'file diff'
-	st = status
-	# Commit all changes
-	ca = !git add -A && git commit -av
-	# Ammend all changes to previous commit
-	caa = !git ca --amend --reuse-message=HEAD
-	# diff changes only committed in a branch compared to origin/master
-	dm = !git diff origin/master...${1-HEAD}
-	# list files modified by commits in branch compared to origin/master
-	dmf = !git diff origin/master...${1-HEAD} --name-only
+	[alias]
+    co = checkout
+    d = !git diff | view - +'file diff'
+    st = status
+    b = branch
+    sup = svn rebase
+    # git svn update and push
+    spush = !git svn rebase && git svn dcommit
+    # Commit tracked changes
+    ct = !git commit -av
+    # Commit all changes
+    ca = !git add -A && git ct
+    # Amend tracked changes to previous commit
+    cta = !git ct --amend --reuse-message=HEAD
+    # Amend all changes to previous commit
+    caa = !git ca --amend --reuse-message=HEAD
+    # diff changes only committed in current branch compared to another branch, defaults to upstream branch
+    db = "!f() { if [[ ${1:0:1} != "-" ]]; then b=$1; shift; fi; git diff ${b:-'@{u}'}.. "$@"; }; f"
+    # list files modified by commits in current branch compared to another branch, defaults to upstream branch
+    dbf = "!f() { if [[ ${1:0:1} != "-" ]]; then b=$1; shift; fi; git diff ${b:-'@{u}'}.. --name-only "$@"; }; f"
+    # log current branch against remotes
+    lb = log HEAD --not --remotes
+    # interactive rebase
+    ir = !git rebase -i
+    #interactive rebase against upstream branch
+    irb = !git rebase -i @{u}
     # a nice graph
     graph = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+    # read-only daemon
+    serve = !git daemon --base-path=. --export-all --reuseaddr --informative-errors --verbose
+    # read/write daemon
+    hub = !git daemon --base-path=. --export-all --enable=receive-pack --reuseaddr --informative-errors --verbose
 
 [color]
 	ui = auto

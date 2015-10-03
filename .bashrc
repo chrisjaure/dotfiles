@@ -41,11 +41,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 	. /etc/bash_completion
 fi
 
-# git-lava autocomplete
-if [ -f ~/bin/git-lava/bash_completion/git-lava ]; then
-	. ~/bin/git-lava/bash_completion/git-lava;
-fi
-
 # source nvm if it exists
 if [ -f ~/.nvm/nvm.sh ]; then
 	. ~/.nvm/nvm.sh

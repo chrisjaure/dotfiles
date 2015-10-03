@@ -1,5 +1,5 @@
 # PATH additions
-export PATH="$HOME/bin/git-lava:$HOME/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -13,3 +13,6 @@ HISTFILESIZE=2000
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 export GREP_OPTIONS='--color=auto'
+
+# for fish shell
+export LC_ALL=en_US.utf8

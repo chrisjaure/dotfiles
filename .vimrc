@@ -10,9 +10,10 @@ if has('gui_running')
 else
 	set background=dark
 endif
-set t_Co=16
+set t_Co=256
 let g:solarized_termcolors=256
 
+set t_ut=
 
 " enable syntax highlighting
 syntax on

@@ -8,8 +8,12 @@ function __git_ps1
   if [ -n "$g" ]
     set -l r ""
     set -l b ""
-
-    printf '%s' (greadlink -m $g/../ | xargs basename)
+	
+	if [ -x "(command -v readlink)" ]
+      printf '%s' (readlink -m $g/../ | xargs basename)
+    elseif [ -x "(command -v greadlink)" ]
+      printf '%s' (greadlink -m $g/../ | xargs basename)
+    end
 
     if [ -d "$g/../.dotest" ]
       if [ -f "$g/../.dotest/rebasing" ]

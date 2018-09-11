@@ -25,6 +25,7 @@ sudo apt-get update
 #main utils
 sudo apt-get install -y \
 	bsdmainutils \
+	man \
 	fish \
 	docker-ce
 

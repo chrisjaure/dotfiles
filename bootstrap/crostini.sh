@@ -20,6 +20,13 @@ sudo add-apt-repository \
 sudo add-apt-repository \
 	"deb http://ftp.debian.org/debian $(lsb_release -cs)-backports main"
 
+# add fish gpg key
+curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:2/Debian_9.0/Release.key | sudo apt-key add -
+
+# add fish repo
+sudo add-apt-repository \
+	'deb http://download.opensuse.org/repositories/shells:/fish:/release:/2/Debian_9.0/ /'
+
 sudo apt-get update
 
 #main utils

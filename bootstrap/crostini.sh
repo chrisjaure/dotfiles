@@ -40,6 +40,11 @@ sudo apt-get install -y \
 sudo apt-get -t "$(lsb_release -cs)-backports" install -y \
 	tilix
 
+# install bat
+curl -fsSL https://github.com/sharkdp/bat/releases/download/v0.7.0/bat_0.7.0_amd64.deb
+sudo dpkg -i bat_0.7.0_amd64.deb
+rm bat_0.7.0_amd64.deb
+
 # install fisher (package manager for fish shell)
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 

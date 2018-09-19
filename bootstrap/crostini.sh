@@ -41,15 +41,18 @@ sudo apt-get -t "$(lsb_release -cs)-backports" install -y \
 	tilix
 
 # install bat
-curl -fsSL https://github.com/sharkdp/bat/releases/download/v0.7.0/bat_0.7.0_amd64.deb
-sudo dpkg -i bat_0.7.0_amd64.deb
-rm bat_0.7.0_amd64.deb
+curl -Lo /tmp/bat.deb https://github.com/sharkdp/bat/releases/download/v0.7.0/bat_0.7.0_amd64.deb
+sudo dpkg -i bat.deb
 
 # install fisher (package manager for fish shell)
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
-# install fnm (fish node manager, similar to nvm)
-fisher fnm
+# set fish as default shell
+sudo chsh --shell /usr/bin/fish $USER
 
+# install fnm (fish node manager, similar to nvm)
+fish --command fisher fnm
+ 
 # install latest node
-fnm latest
+fish --command fnm latest
+

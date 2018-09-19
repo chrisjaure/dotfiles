@@ -8,6 +8,10 @@ Plug 'vim-airline/vim-airline-themes'
 " javscript/react
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+" linting
+Plug 'w0rp/ale'
+" async autocommand
+Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 
 " themes
@@ -49,3 +53,8 @@ nnoremap ; :
 " mouse mode
 set mouse=a
 
+" MUST COME LAST
+" Read project .vimrc files
+set exrc
+" Only if they are owned by me
+set secure

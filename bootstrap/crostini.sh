@@ -56,3 +56,5 @@ fish --command fisher fnm
 # install latest node
 fish --command fnm latest
 
+# install vim plugins
+vim +PlugInstall +qall

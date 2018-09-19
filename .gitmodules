@@ -1,9 +1,0 @@
-[submodule ".nvm"]
-	path = .nvm
-	url = git://github.com/creationix/nvm.git
-[submodule ".vim/bundle/vim-colors-solarized"]
-	path = .vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule ".vim/bundle/powerline"]
-	path = .vim/bundle/powerline
-	url = git://github.com/Lokaltog/vim-powerline.git

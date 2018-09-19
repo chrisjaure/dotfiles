@@ -16,7 +16,7 @@ function doIt() {
 		git pull
 		git submodule update --init --recursive --quiet
 	fi
-	rsync --include ".gitconfig" --exclude "README.md" --exclude ".git*" --exclude ".npm*" -arv . ~
+	rsync --include ".gitconfig" --exclude "README.md" --exclude ".git*" --exclude ".npm*" --exclude "bootstrap" -arv . ~
 }
 
 # If Git is not installed...

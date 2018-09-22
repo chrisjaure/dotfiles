@@ -17,6 +17,11 @@ function doIt() {
 		git submodule update --init --recursive --quiet
 	fi
 	rsync --include ".gitconfig" --exclude "README.md" --exclude ".git*" --exclude ".npm*" --exclude "bootstrap" -arv . ~
+
+  if [ $BOOTSTRAP == "crostini" ]; then
+    echo "Bootstrapping crostini..."
+    sh "$local_path/bootstrap/crostini.sh"
+  fi
 }
 
 # If Git is not installed...

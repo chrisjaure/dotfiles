@@ -1,10 +1,14 @@
+set nocompatible
 " plugins
 call plug#begin()
 Plug 'tpope/vim-sensible'
+" status bar
 Plug 'tpope/vim-fugitive'
 Plug 'bling/vim-bufferline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" general programming
+Plug 'sheerun/vim-polyglot'
 " javscript/react
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -34,8 +38,13 @@ set number
 " show matching parens
 set showmatch
 
-" Set utf8 as standard encoding and en_US as the standard language
+" Set utf8 as standard encoding
 set encoding=utf8
+
+" Indent using two spaces.
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac

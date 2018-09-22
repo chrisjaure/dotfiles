@@ -1,5 +1,5 @@
 set PATH $HOME/bin $PATH
 
 # aliases
-alias cat "bat"
+alias cat "bat --tabs 4"
 

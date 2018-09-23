@@ -59,6 +59,9 @@ set nowb
 " short-cut
 nnoremap ; :
 
+" better autoread
+au FocusGained,BufEnter * :checktime
+
 " mouse mode
 set mouse=a
 

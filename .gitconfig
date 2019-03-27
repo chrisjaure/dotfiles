@@ -1,24 +1,21 @@
 [user]
-	name = Chris Jaure
-	email = chrisjaure@gmail.com
+    name = Chris Jaure
+    email = chrisjaure@gmail.com
 
 [core]
-	autocrlf = input
-	whitespace = space-before-tab,trailing-space
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    autocrlf = input
+    whitespace = space-before-tab,trailing-space
+    pager = diff-so-fancy | less --tabs=4 -RFX
 
 [apply]
-	# Detect whitespace errors when applying a patch
-	whitespace = fix
+    # Detect whitespace errors when applying a patch
+    whitespace = fix
 
 [alias]
     co = checkout
     d = diff
     st = status
     b = branch
-    sup = svn rebase
-    # git svn update and push
-    spush = !git svn rebase && git svn dcommit
     # Commit tracked changes
     ct = !git commit -av
     # Commit all changes
@@ -37,6 +34,10 @@
     ir = !git rebase -i
     #interactive rebase against upstream branch
     irb = !git rebase -i @{u}
+    # push new tracking branch
+    ptb = push -u origin HEAD
+    # pull request with hub
+    pr = !git ptb && hub pull-request
     # a nice graph
     graph = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
     # read-only daemon
@@ -45,10 +46,10 @@
     hub = !git daemon --base-path=. --export-all --enable=receive-pack --reuseaddr --informative-errors --verbose
 
 [color]
-	ui = auto
+    ui = auto
 
 [push]
-	default = simple
+    default = simple
 
 [rerere]
-	enabled = 1
+    enabled = 1

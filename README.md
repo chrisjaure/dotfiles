@@ -16,5 +16,5 @@ Options
 Inspiration
 -----------
 <https://github.com/cowboy/dotfiles>  
-<https://github.com/mathiasbynens/dotfiles>
-<https://github.com/danreeves/dotfiles>
+<https://github.com/mathiasbynens/dotfiles>  
+<https://github.com/danreeves/dotfiles>  
